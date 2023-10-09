@@ -1,0 +1,22 @@
+[
+    {
+        "Nombre": "Peras",
+        "precio_por_unidad": 12000,
+        "Cantidad en stock": 12
+    },
+    {
+        "Nombre": "Manzanas",
+        "precio_por_unidad": 7000,
+        "Cantidad en stock": 15
+    },
+    {
+        "Nombre": "Bananos",
+        "precio_por_unidad": 3500,
+        "Cantidad en stock": 25
+    },
+    {
+        "Nombre": "Uvas",
+        "precio_por_unidad": 2500,
+        "Cantidad en stock": 10
+    }
+]
