@@ -44,7 +44,4 @@ lista_de_tuplas = procesador.generar_lista_de_tuplas()
 # Obtener los N párrafos más largos (por ejemplo, los 5 más largos)
 N = 5
 parrafos_largos = procesador.parrafos_mas_largos(N)
-for parrafo, longitud in parrafos_largos:
-    print()
-    print(f"Párrafo ({longitud} caracteres):\n{parrafo}")
-    print()
+
