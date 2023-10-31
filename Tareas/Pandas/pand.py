@@ -86,21 +86,38 @@ def pandas(df):
         ultima_fecha = sin_fechas_rep.min()
         dias_transcurridos = primera_fecha - ultima_fecha
         print(f"Los dias trasncurridos en de la primera a la ultima fecha es {dias_transcurridos}")
-                    
+
+        #Muertes de hombres y mujeres para las fechas de la anterior columna(Me supongo que es para la columna de fechas de notificacion)
+        muertes_hombres = df[df["Sexo"]=="M"] & df[df["Recuperado"]=="FALLECIDO"]
+        numero_muertes_h = muertes_hombres.shape[0]
+        muertes_mujeres = df[df["Sexo"]=="F"] & df[df["Recuperado"]=="FALLECIDO"]
+        nu_muertes_f = muertes_mujeres.shape[0]
+
+        #Recuperados de hombres y mujeres
+        muertes_hombres = df[df["Sexo"]=="M"] & df[df["Recuperado"]=="RECUPERADO"]
+        numero_recuperados_h = muertes_hombres.shape[0]
+        muertes_mujeres = df[df["Sexo"]=="F"] & df[df["Recuperado"]=="RECUPERADO"]
+        numero_recuperados_f = muertes_mujeres.shape[0]
+        #
+        
+        #Con esto podemos armar la matriz de [[muertes hombres, muertes mujeres][recuperados hombres, recuperado mujeres]]
+        matriz = np.array([[numero_muertes_h, nu_muertes_f][numero_recuperados_h, numero_recuperados_f]])
+        print(matriz)
+
 
         # 
-        # #Exportar una nueva tabla donde solo aparezca el dataframe de un deaprtamento
-        # desktop_path = ("C:/Users/HP/OneDrive - uqvirtual.edu.co/Escritorio/progra/")
+        #Exportar una nueva tabla donde solo aparezca el dataframe de un deaprtamento
+        desktop_path = ("C:/Users/HP/OneDrive - uqvirtual.edu.co/Escritorio/progra/")
 
-        # # Nombre del archivo CSV de salida
-        # output_file = "Nariño.csv"
+        # Nombre del archivo CSV de salida
+        output_file = "Nariño.csv"
 
-        # # Ruta completa del archivo de salida
-        # output_path = desktop_path + output_file
+        # Ruta completa del archivo de salida
+        output_path = desktop_path + output_file
 
-        # # Guarda el DataFrame limpio como un archivo CSV en el escritorio
-        # df_nar.to_csv(output_path, index=False)
-        # print("El archivo se exporto con exito")
+        # Guarda el DataFrame limpio como un archivo CSV en el escritorio
+        df_nar.to_csv(output_path, index=False)
+        print("El archivo se exporto con exito")
 
     except Exception as e:
         print("Error:", str(e))
@@ -111,7 +128,7 @@ def inicializar_funcion():
         df = pd.read_csv("repaso_extra/Analisis de datos/Casos_positivos_de_COVID-19_en_Colombia._20231026.csv",sep=",",header=0)
         # Visualizar las primeras 5 columnas----> df.iloc[filas,columnas]
         encabezado = df.iloc[:, :5]  # df.iloc[desde:hasta , desde:hasta]
-        #print(encabezado)
+        print(encabezado)
         #pandas(df)
 
     except Exception as e:
